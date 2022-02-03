@@ -11,7 +11,7 @@ import DataManifest from 'manifest.js';
 me.device.onReady(() => {
 
     // initialize the display canvas once the device/browser is ready
-    if (!me.video.init(1000, 100, { parent: "screen", scale: "auto" })) {
+    if (!me.video.init(640, 480, { parent: "screen", scale: "auto", scaleMethod: "flex-width" })) {
         alert("Your browser does not support HTML5 canvas.");
         return;
     }
@@ -33,6 +33,7 @@ me.device.onReady(() => {
 
     // set and load all resources.
     me.loader.preload(DataManifest, function () {
+        console.log("hello");
         // set the user defined game stages
         me.state.set(me.state.MENU, new TitleScreen());
         me.state.set(me.state.PLAY, new PlayScreen());
